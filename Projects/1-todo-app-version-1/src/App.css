@@ -1,0 +1,14 @@
+
+input{
+    width: 100%;
+}
+
+.button-div{
+    text-align: center;
+}
+.kg-button{
+    min-width: 80px;
+}
+.kg-row{
+    margin: 10px 5px;
+}
