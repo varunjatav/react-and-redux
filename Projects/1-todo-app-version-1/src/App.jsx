@@ -19,7 +19,9 @@ function App() {
       title: todo,
       date: date
     };
-    setTodoData([...todoData, newTodoData])
+    setTodoData([...todoData, newTodoData]);
+    setTodo("");
+    setDate("");
   }
   const handleDelete = (id) => {
    const filteredData = todoData.filter(todo => todo.id !== id);
