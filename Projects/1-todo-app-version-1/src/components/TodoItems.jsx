@@ -1,15 +1,16 @@
+/* eslint-disable react/prop-types */
 
-const TodoItems = (props) => {
+const TodoItems = ({id, title, date,handleDelete}) => {
   return (
     <div className="row kg-row">
     <div className="col-6">
-      {props.title}
+      {title}
     </div>
       <div className="col-4">
-       {props.date}
+       {date}
       </div>
       <div className="col-2 button-div">
-      <button type="button" className="btn btn-danger kg-button">Delete</button>
+      <button type="button" className="btn btn-danger kg-button" onClick={() => handleDelete(id)}>Delete</button>
       </div>
     </div>
   )
