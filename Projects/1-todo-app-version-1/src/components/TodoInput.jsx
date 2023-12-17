@@ -1,21 +1,48 @@
 /* eslint-disable react/prop-types */
 import { RiAddBoxLine } from "react-icons/ri";
-const TodoInput = ({todo,setTodo,date,setDate, handleAdd}) => {
+import { v4 as uuidv4 } from "uuid";
+import { useRef } from "react";
+const TodoInput = ({ setTodoData }) => {
+  const todo = useRef("");
+  const date = useRef("");
+  console.log("todo :", todo);
+  console.log("date :", date);
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+
+    setTodoData((currValue) => [
+      ...currValue,
+      {
+        id: uuidv4(),
+        title: todo.current.value,
+        date: date.current.value,
+      },
+    ]);
+    todo.current.value = "";
+    date.current.value = "";
+  };
   return (
-    <div className="row kg-row">
-    <div className="col-6">
-      <input type="text" name="title" id="title" placeholder="Enter Todo Here" value={todo} onChange={(e) => setTodo(e.target.value)} />
-    </div>
+    <form className="row kg-row" onSubmit={(e) => handleAdd(e)}>
+      <div className="col-6">
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Enter Todo Here"
+          ref={todo}
+        />
+      </div>
       <div className="col-4">
-        <input type="date" name="date" id="date" value={date} onChange={(e) => setDate(e.target.value)}/>
+        <input type="date" name="date" id="date" ref={date} />
       </div>
       <div className="col-2">
-      <button type="button" className="btn btn-success kg-button" onClick={handleAdd}>
-      <RiAddBoxLine  />
-      </button>
+        <button type="submit" className="btn btn-success kg-button">
+          <RiAddBoxLine />
+        </button>
       </div>
-    </div>
-  )
-}
+    </form>
+  );
+};
 
-export default TodoInput
+export default TodoInput;
