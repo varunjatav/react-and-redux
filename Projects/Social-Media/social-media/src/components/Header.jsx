@@ -17,11 +17,11 @@ const Header = () => {
           <li><a href="#" className="nav-link px-2 text-white">About</a></li>
         </ul>
 
-        <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 search" role="search">
           <input type="search" className="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search"/>
         </form>
 
-        <div className="text-end">
+        <div className="text-end search">
           <button type="button" className="btn btn-outline-light me-2">Login</button>
           <button type="button" className="btn btn-warning">Sign-up</button>
         </div>

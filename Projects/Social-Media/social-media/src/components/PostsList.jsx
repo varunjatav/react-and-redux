@@ -5,7 +5,7 @@ import { PostContext } from "../store/post-list-store";
 const PostsList = () => {
   const { postList } = useContext(PostContext);
   return (
-    <div >
+    <div className="postList">
       {postList.map((post) => (
         <Post
           key={post.id}
