@@ -1,27 +1,10 @@
 /* eslint-disable react/prop-types */
+import { useContext } from "react";
 import { RiAddBoxLine } from "react-icons/ri";
-import { v4 as uuidv4 } from "uuid";
-import { useRef } from "react";
-const TodoInput = ({ setTodoData }) => {
-  const todo = useRef("");
-  const date = useRef("");
-  console.log("todo :", todo);
-  console.log("date :", date);
+import { TodoItemContext } from "../store/todo-items-context";
 
-  const handleAdd = (e) => {
-    e.preventDefault();
-
-    setTodoData((currValue) => [
-      ...currValue,
-      {
-        id: uuidv4(),
-        title: todo.current.value,
-        date: date.current.value,
-      },
-    ]);
-    todo.current.value = "";
-    date.current.value = "";
-  };
+const TodoInput = () => {
+const {todo,date,handleAdd} = useContext(TodoItemContext);
   return (
     <form className="row kg-row" onSubmit={(e) => handleAdd(e)}>
       <div className="col-6">

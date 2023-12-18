@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
+import { useContext } from "react";
 import { MdDelete } from "react-icons/md";
-const TodoItems = ({id, title, date,handleDelete}) => {
+import { TodoItemContext } from "../store/todo-items-context";
+const TodoItems = ({id, title, date}) => {
+  const {handleDelete} = useContext(TodoItemContext);
   return (
     <div className="row kg-row">
     <div className="col-6">
