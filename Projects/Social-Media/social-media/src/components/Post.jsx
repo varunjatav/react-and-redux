@@ -7,11 +7,10 @@ import { useContext } from "react";
 import { MdDelete } from "react-icons/md";
 import { PostContext } from "../store/post-list-store";
 
-const Post = ({id,title, body, reactions, tags, image }) => {
+const Post = ({id,title, body, reactions, tags }) => {
   const {deletePost} = useContext(PostContext);
   return (
     <div className="card post-card">
-      <img src={image} className="card-img-top" alt="..." />
       <div  className="card-body">
         <h5 className="card-title">
           {title}

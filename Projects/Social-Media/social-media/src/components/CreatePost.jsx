@@ -6,7 +6,6 @@ import { PostContext } from "../store/post-list-store";
 
 const CreatePost = () => {
   const userIdRef = useRef("");
-  const postRef = useRef("");
   const titleRef = useRef("");
   const contentRef = useRef("");
   const reactionRef = useRef("");
@@ -17,7 +16,6 @@ const CreatePost = () => {
 
     addPost({
       userId : userIdRef.current.value,
-      post : postRef.current.value,
       title: titleRef.current.value,
       content: contentRef.current.value,
       reaction: reactionRef.current.value,
@@ -32,10 +30,7 @@ const CreatePost = () => {
       <label htmlFor="user_Id" className="form-label">Enter Your User Id here</label>
       <input type="text" ref={userIdRef}  className="form-control" id="user_Id" placeholder="Enter your User Id"/>
     </div>
-    <div className="mb-3">
-      <label htmlFor="Image" className="form-label">Post </label>
-      <input type="url" ref={postRef}  className="form-control" id="Image" placeholder="Enter your Post"/>
-    </div>
+    
     <div className="mb-3">
       <label htmlFor="title" className="form-label">Post Title</label>
       <input type="text" ref={titleRef}  className="form-control" id="title" placeholder="Enter your Post Title"/>

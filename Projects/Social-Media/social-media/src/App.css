@@ -1,63 +1,124 @@
-.app-container{
-    display: flex;
+.app-container {
+  display: flex;
 }
-.content{
-    width: 100%;
+.content {
+  width: 100%;
 }
-.header{
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 95%;
-    z-index: 1;
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 95%;
+  z-index: 1;
 }
-.sidebar{
-    height: 800px;
-    width: fit-content;
-    position: fixed;
-    z-index: 1;
+.sidebar {
+  height: 800px;
+  width: fit-content;
+  position: fixed;
+  z-index: 1;
 }
-.post-card{
-    width: 30rem;
-    margin: 100px auto 60px auto;
+.post-card {
+  width: 30rem;
+  margin: 100px auto 60px auto;
 }
-.hashtag{
-    margin: 0px 3px;
+.hashtag {
+  margin: 0px 3px;
 }
-.reactions{
-    margin: 15px 0 0 0;
+.reactions {
+  margin: 15px 0 0 0;
 }
-.create-post{
-    width: 60%;
-    margin: 100px auto 40px auto;
+.create-post {
+  width: 60%;
+  margin: 100px auto 40px auto;
 }
-/* .postList{
-    width: 100%;
-} */
-.footer{
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 95%;
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 95%;
 }
-.tabs{
-    display: flex;
-    align-items: center;
-    gap: 5px;
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
-@media screen and  (max-width: 1000px) {
-    .search{
-        display: none
-    }
-    .footer{
-        width: 91%;
-    }
-    .header{
-        width: 91%;  
-    }
+.welocomeMessage {
+  width: 100%;
+  height: 100%;
+  padding: 119px 648px;
 }
-@media screen and  (max-width: 700px) {
-   .sidebar{
+.spinner{
+    height: 100%;
+    padding: 300px 0;
+}
+@media screen and (max-width: 1000px) {
+  .search {
     display: none;
-   }
+  }
+  .footer {
+    width: 92%;
+  }
+  .header {
+    width: 92%;
+  }
+  .welocomeMessage {
+    padding: 119px 248px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .header {
+    width: 92%;
+  }
+  .footer {
+    width: 92%;
+  }
+  .create-post {
+    width: 80%;
+    margin-left: 100px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .welocomeMessage {
+    padding: 119px 148px;
+  }
+  .header {
+    width: 90%;
+  }
+  .footer {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 750px) {
+  .header {
+    width: 90%;
+  }
+  .footer {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .sidebar {
+    display: none;
+  }
+  .header {
+    width: 88%;
+  }
+  .footer {
+    width: 88%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .welocomeMessage {
+    padding: 119px 108px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .header {
+    width: 86%;
+  }
+  .footer {
+    width: 86%;
+  }
 }
