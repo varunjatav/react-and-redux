@@ -10,12 +10,19 @@ const PostsList = () => {
 
  useEffect(() => {
   setfetching(true);
+  const controller = new AbortController();
+  const signal = controller.signal
+  // console.log(controller);
+  
   fetch("https://dummyjson.com/posts")
       .then((res) => res.json())
       .then((data) =>{ 
         getPosts(data.posts)
       setfetching(false)
       });
+      return () => {
+        controller.abort()
+      }
  },[])
   return (
     <div className="postList">
