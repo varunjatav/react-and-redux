@@ -1,29 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Post from "./Post";
 import { PostContext } from "../store/post-list-store";
 import WelcomMessage from "./WelcomMessage";
 import Loader from "./Loader";
 
 const PostsList = () => {
-  const { postList, getPosts } = useContext(PostContext);
-  const [fetching,setfetching] = useState(false)
-
- useEffect(() => {
-  setfetching(true);
-  const controller = new AbortController();
-  const signal = controller.signal
-  // console.log(controller);
-  
-  fetch("https://dummyjson.com/posts")
-      .then((res) => res.json())
-      .then((data) =>{ 
-        getPosts(data.posts)
-      setfetching(false)
-      });
-      return () => {
-        controller.abort()
-      }
- },[])
+  const { postList, fetching } = useContext(PostContext);
+ 
   return (
     <div className="postList">
       {fetching && <Loader/>}

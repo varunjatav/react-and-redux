@@ -1,11 +1,12 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 
 export const PostContext = createContext({
   postList: [],
   addPost: () => {},
-  getPosts: () => {},
+  fetching: false,
   deletePost: () => {},
 });
 // eslint-disable-next-line no-unused-vars
@@ -18,7 +19,7 @@ const postListReducer = (currPostList, action) => {
   } else if (action.type === "GET_POSTS") {
     newPostList = action.payload.posts;
   } else if (action.type === "ADD_POST") {
-    newPostList = [action.payload, ...currPostList];
+    newPostList = [action.payload.post, ...currPostList];
   }
   return newPostList;
 };
@@ -27,16 +28,12 @@ const PostContextProvider = ({ children }) => {
   // eslint-disable-next-line no-unused-vars
 
   const [postList, dispatchPostList] = useReducer(postListReducer, []);
-  const addPost = ({ userId, title, content, reaction, tag }) => {
+  const [fetching, setfetching] = useState(false);
+  const addPost = (post) => {
     dispatchPostList({
       type: "ADD_POST",
       payload: {
-        id: Date.now(),
-        title: title,
-        body: content,
-        reactions: reaction,
-        user_ID: userId,
-        tags: tag,
+        post,
       },
     });
   };
@@ -56,8 +53,27 @@ const PostContextProvider = ({ children }) => {
       },
     });
   };
+
+  useEffect(() => {
+    setfetching(true);
+    const controller = new AbortController();
+    const signal = controller.signal;
+    // console.log(controller);
+
+    fetch("https://dummyjson.com/posts")
+      .then((res) => res.json())
+      .then((data) => {
+        getPosts(data.posts);
+        setfetching(false);
+      });
+    return () => {
+      controller.abort();
+    };
+  }, []);
+
+
   return (
-    <PostContext.Provider value={{ postList, addPost, getPosts, deletePost }}>
+    <PostContext.Provider value={{ postList, fetching, addPost, deletePost }}>
       {children}
     </PostContext.Provider>
   );
