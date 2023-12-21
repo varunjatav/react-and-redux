@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { IoMdHome, IoIosCreate } from "react-icons/io";
+import { Link } from "react-router-dom";
 
-const Sidebar = ({ selectedTab, setSelectedTab }) => {
+const Sidebar = () => {
   return (
     <div className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar">
       <a
@@ -13,22 +14,22 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
         <li className="nav-item tabs">
-          <a
-            href="#"
-            className={`nav-link  ${selectedTab === "Home" && "active"}`}
-            onClick={() => setSelectedTab("Home")}
+          <Link
+            to="/"
+            className="nav-link "
+            onClick={() => console.log("Home")}
           >
             <IoMdHome />
-          </a>
+          </Link>
         </li>
         <li className="nav-item tabs">
-          <a
-            href="#"
-            className={`nav-link  ${selectedTab === "Create Post" && "active"}`}
-            onClick={() => setSelectedTab("Create Post")}
+          <Link
+            to="/create-post"
+            className="nav-link "
+            onClick={() => console.log("Create Post")}
           >
             <IoIosCreate />
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

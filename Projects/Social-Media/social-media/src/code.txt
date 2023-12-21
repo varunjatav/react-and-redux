@@ -1,0 +1,18 @@
+export const createPostAction = async(data) => {
+  const formdata = await data.request.formData();
+  const formEntries = Object.fromEntries(formdata);
+  formEntries.tags = formEntries.tags.split(" ");
+  console.log(formEntries);
+
+  fetch("https://dummyjson.com/posts/add", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formEntries),
+  })
+    .then((res) => res.json())
+    .then((post) => {
+      console.log(post)
+    
+    });
+    return redirect("/");
+}

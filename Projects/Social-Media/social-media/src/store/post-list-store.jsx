@@ -1,12 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
-import { createContext, useEffect, useReducer, useState } from "react";
+import { createContext,useReducer} from "react";
 
 export const PostContext = createContext({
   postList: [],
   addPost: () => {},
-  fetching: false,
   deletePost: () => {},
 });
 // eslint-disable-next-line no-unused-vars
@@ -28,7 +27,6 @@ const PostContextProvider = ({ children }) => {
   // eslint-disable-next-line no-unused-vars
 
   const [postList, dispatchPostList] = useReducer(postListReducer, []);
-  const [fetching, setfetching] = useState(false);
   const addPost = (post) => {
     dispatchPostList({
       type: "ADD_POST",
@@ -54,26 +52,11 @@ const PostContextProvider = ({ children }) => {
     });
   };
 
-  useEffect(() => {
-    setfetching(true);
-    const controller = new AbortController();
-    const signal = controller.signal;
-    // console.log(controller);
-
-    fetch("https://dummyjson.com/posts")
-      .then((res) => res.json())
-      .then((data) => {
-        getPosts(data.posts);
-        setfetching(false);
-      });
-    return () => {
-      controller.abort();
-    };
-  }, []);
+ 
 
 
   return (
-    <PostContext.Provider value={{ postList, fetching, addPost, deletePost }}>
+    <PostContext.Provider value={{ postList, addPost, deletePost }}>
       {children}
     </PostContext.Provider>
   );
