@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Home from './routes/Home.jsx'
 import MyntraStore from './store/index.js'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const router = createBrowserRouter([
   {
